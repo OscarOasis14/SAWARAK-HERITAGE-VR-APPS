@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sarawak Heritage VR</title>
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+</head>
+<body>
+  <a-scene raycaster="objects: .interactable">
+    
+    <!-- Muzik Sape Autoplay Selepas Klik -->
+    <a-sound id="bgSound" src="#sapeSound" loop="true" volume="0.5" position="0 1.6 0"></a-sound>
+   
+  <!-- Asset Gambar Latar Lobi -->
+  <a-assets>
+    <img id="wallFront" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/museum_front.jpg?v=1750533627554">
+    <img id="wallBack" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/museum_back.jpg?v=1750533582128">
+    <img id="wallLeft" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/museum_left.jpg?v=1750533644780">
+    <img id="wallRight" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/museum_right?v=1750533677978">
+    <img id="wallFloor" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/wood_floor.jpg?v=1750533653996">
+    <img id="wallCeiling" src="assets/museum_ceiling.jpg">
+    
+    <!-- Image untuk bilik -->
+    <img id="puaImg1" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/pua1.jpg?v=1750536059900">
+    <img id="puaImg2" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/pua2.jpg?v=1750536061519">
+    <img id="puaImg3" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/pua3.jpg?v=1750516793240">
+    <img id="puaImg4" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/pua4.jpg?v=1750536411421">
+    <img id="puaImg5" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/pua5.jpg?v=1750536202387">
+    <img id="puaImg6" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/pua6.jpg?v=1750536203848">
+    <img id="ukiranImg1" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/ukiran1.jpg?v=1750523164076">
+    <img id="ukiranImg2" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/ukiran2.jpg?v=1750536796806">
+    <img id="ukiranImg3" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/ukiran3.jpg?v=1750536829028">
+    <img id="ukiranImg4" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/ukiran4.jpg?v=1750536825664">
+    <img id="ukiranImg5" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/ukiran5.jpg?v=1750536822649">
+    <img id="ukiranImg6" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/ukiran6.jpg?v=1750536780928">
+    <img id="sapeImg1" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/sape1.jpg?v=1750516910837">
+    <img id="sapeImg2" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/sape2.jpg?v=1750537086650">
+    <img id="sapeImg3" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/sape3.jpg?v=1750537084084">
+    <img id="sapeImg4" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/sape4.jpg?v=1750537082625">
+    <img id="sapeImg5" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/sape5.jpg?v=1750537080985">
+    <img id="sapeImg6" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/sape6.jpg?v=1750537102403">
+
+    <!-- Audio -->
+    <audio id="sapeSound" src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/borneo.mp3?v=1750538047382"></audio>
+  </a-assets>
+
+  <!-- Kamera -->
+  <a-entity id="cameraRig">
+    <a-camera id="mainCamera" position="0 1.6 8" look-controls="enabled: true">
+      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .interactable"></a-entity>
+    </a-camera>
+  </a-entity>
+
+  <!-- Latar belakang Lobi (6 Bahagian) -->
+  <a-plane position="0 2 -10" rotation="0 0 0" width="20" height="6" src="#wallFront"></a-plane>
+  <a-plane position="0 2 10" rotation="0 180 0" width="20" height="6" src="#wallBack"></a-plane>
+  <a-plane position="-10 2 0" rotation="0 90 0" width="20" height="6" src="#wallLeft"></a-plane>
+  <a-plane position="10 2 0" rotation="0 -90 0" width="20" height="6" src="#wallRight"></a-plane>
+  <a-plane position="0 5 0" rotation="90 0 0" width="20" height="20" src="#wallCeiling"></a-plane>
+  <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" src="#wallFloor"></a-plane>
+
+  <!-- Tajuk Lobi -->
+  <a-text value="Borneo Culture Museum VR" position="0 5 -8" align="center" width="12" color="#000"></a-text>
+
+  <!-- Pintu Masuk ke Bilik -->
+<!-- Pintu Masuk ke Bilik Pua -->
+<a-box id="toPua" class="interactable" position="-6 1 -4" width="2.5" height="3" depth="0.5" color="#F06292">
+  <a-text value="Pua Room" align="center" position="0 0.5 0.3" color="#000" width="4" height="2" scale="1.5 1.5 1"></a-text>
+  <a-text value="Click to Enter" align="center" position="0 -0.5 0.3" color="#000" width="4" height="1" scale="1 1 1"></a-text>
+</a-box>
+
+<!-- Pintu Masuk ke Bilik Ukiran -->
+<a-box id="toUkiran" class="interactable" position="0 1 -8" width="2.5" height="3" depth="0.5" color="#FFD54F">
+  <a-text value="Ukiran Room" align="center" position="0 0.5 0.3" color="#000" width="4" height="2" scale="1.5 1.5 1"></a-text>
+  <a-text value="Click to Enter" align="center" position="0 -0.5 0.3" color="#000" width="4" height="1" scale="1 1 1"></a-text>
+</a-box>
+
+<!-- Pintu Masuk ke Bilik Sape -->
+<a-box id="toSape" class="interactable" position="6 1 -4" width="2.5" height="3" depth="0.5" color="#4FC3F7">
+  <a-text value="Sape Room" align="center" position="0 0.5 0.3" color="#000" width="4" height="2" scale="1.5 1.5 1"></a-text>
+  <a-text value="Click to Enter" align="center" position="0 -0.5 0.3" color="#000" width="4" height="1" scale="1 1 1"></a-text>
+</a-box>
+
+<!-- Template Gambar -->
+<template id="roomTemplate">
+  <a-image id="roomImg1" position="-3 3 -4" width="1.5" height="1.5"></a-image>
+  <a-image id="roomImg2" position="0 3 -4" width="1.5" height="1.5"></a-image>
+  <a-image id="roomImg3" position="3 3 -4" width="1.5" height="1.5"></a-image>
+  <a-image id="roomImg4" position="-3 1 -4" width="1.5" height="1.5"></a-image>
+  <a-image id="roomImg5" position="0 1 -4" width="1.5" height="1.5"></a-image>
+  <a-image id="roomImg6" position="3 1 -4" width="1.5" height="1.5"></a-image>
+
+  <!-- Butang Exit dengan teks di dalam kotak -->
+  <a-box id="exitRoom" class="interactable" position="0 1.5 4" width="2.5" height="1.2" depth="0.2" color="#E53935">
+    <a-text value="CLICK HERE TO EXIT THE ROOM"
+            align="center"
+            position="0 0 0.15"
+            color="#FFFFFF"
+            width="3.5"
+            scale="0.8 0.8 1">
+    </a-text>
+  </a-box>
+</template>
+
+
+ <!-- Bilik Pua -->
+  
+<a-entity id="puaRoom" visible="false">
+  <!-- Dinding -->
+  <a-plane position="0 2 -4" rotation="0 0 0" width="10" height="4" color="#FFF"></a-plane>
+  <a-plane position="0 2 4" rotation="0 180 0" width="10" height="4" color="#FFF"></a-plane>
+  <a-plane position="-5 2 0" rotation="0 90 0" width="8" height="4" color="#FFF"></a-plane>
+  <a-plane position="5 2 0" rotation="0 -90 0" width="8" height="4" color="#FFF"></a-plane>
+
+  <!-- Maklumat Kiri -->
+  <a-plane position="-4.9 2 0" rotation="0 90 0" width="6.5" height="3" color="#FFF" opacity="0.8"></a-plane>
+  <a-text value="Pua Kumbu is a sacred handwoven textile traditionally crafted by the Iban women of Sarawak. Its origins date back centuries, serving ceremonial, spiritual, and social functions within the Iban community."
+           position="-4.9 2 0.01" rotation="0 90 0"
+           width="5.5" wrap-count="40" align="center" color="#000"></a-text>
+
+  <!-- Maklumat Kanan -->
+  <a-plane position="4.9 2 0" rotation="0 -90 0" width="6.5" height="3" color="#FFF" opacity="0.8"></a-plane>
+  <a-text value="The intricate patterns, created with natural dyes and backstrap loom techniques, symbolize ancestral stories and are believed to carry protective spiritual energy. Pua Kumbu is regarded as a cultural heritage of national significance."
+           position="4.9 2 0.01" rotation="0 -90 0"
+           width="5.5" wrap-count="40" align="center" color="#000"></a-text>
+
+  <a-entity id="puaContent"></a-entity>
+</a-entity>
+
+
+<!-- Bilik Ukiran -->
+<a-entity id="ukiranRoom" visible="false">
+  <!-- Dinding -->
+  <a-plane position="0 2 -4" rotation="0 0 0" width="10" height="4" color="#FFF"></a-plane>
+  <a-plane position="0 2 4" rotation="0 180 0" width="10" height="4" color="#FFF"></a-plane>
+  <a-plane position="-5 2 0" rotation="0 90 0" width="8" height="4" color="#FFF"></a-plane>
+  <a-plane position="5 2 0" rotation="0 -90 0" width="8" height="4" color="#FFF"></a-plane>
+
+  <!-- Maklumat Kiri -->
+  <a-plane position="-4.9 2 0" rotation="0 90 0" width="6.5" height="3" color="#FFF" opacity="0.8"></a-plane>
+  <a-text value="Woodcarving, or ukiran, is an ancient art form practiced by the Orang Ulu and Dayak peoples of Borneo. It has been used for generations to decorate longhouses, shields, and sacred artifacts."
+           position="-4.9 2 0.01" rotation="0 90 0"
+           width="5.5" wrap-count="40" align="center" color="#000"></a-text>
+
+  <!-- Maklumat Kanan -->
+  <a-plane position="4.9 2 0" rotation="0 -90 0" width="6.5" height="3" color="#FFF" opacity="0.8"></a-plane>
+  <a-text value="Each carving carries symbolic meaning, often representing protection, nature, or ancestral spirits. These designs are not merely aesthetic, but function as visual storytelling passed down through oral tradition."
+           position="4.9 2 0.01" rotation="0 -90 0"
+           width="5.5" wrap-count="40" align="center" color="#000"></a-text>
+
+  <a-entity id="ukiranContent"></a-entity>
+</a-entity>
+
+
+<!-- Bilik Sape -->
+<a-entity id="sapeRoom" visible="false">
+  <!-- Dinding -->
+  <a-plane position="0 2 -4" rotation="0 0 0" width="10" height="4" color="#FFF"></a-plane>
+  <a-plane position="0 2 4" rotation="0 180 0" width="10" height="4" color="#FFF"></a-plane>
+  <a-plane position="-5 2 0" rotation="0 90 0" width="8" height="4" color="#FFF"></a-plane>
+  <a-plane position="5 2 0" rotation="0 -90 0" width="8" height="4" color="#FFF"></a-plane>
+
+  <!-- Maklumat Kiri -->
+  <a-plane position="-4.9 2 0" rotation="0 90 0" width="6.5" height="3" color="#FFF" opacity="0.8"></a-plane>
+  <a-text value="The Sape, a traditional lute of the Orang Ulu, emerged in the 19th century as a solo instrument used in healing rituals. Carved from a single wood block, it reflects both craftsmanship and spiritual significance."
+           position="-4.9 2 0.01" rotation="0 90 0"
+           width="5.5" wrap-count="40" align="center" color="#000"></a-text>
+
+  <!-- Maklumat Kanan -->
+  <a-plane position="4.9 2 0" rotation="0 -90 0" width="6.5" height="3" color="#FFF" opacity="0.8"></a-plane>
+  <a-text value="Over time, the Sape evolved into a modern cultural symbol of Sarawak, gaining global attention. Its melodic sound continues to be celebrated in contemporary world music and heritage festivals."
+           position="4.9 2 0.01" rotation="0 -90 0"
+           width="5.5" wrap-count="40" align="center" color="#000"></a-text>
+
+  <a-sound src="#sapeSound" autoplay="true" loop="true"></a-sound>
+  <a-entity id="sapeContent"></a-entity>
+</a-entity>
+
+
+
+  <!-- JavaScript Logic -->
+ <script>
+      // Mainkan muzik selepas user klik pertama kali
+      window.addEventListener('click', () => {
+        const sound = document.querySelector('#bgSound');
+        if (sound && sound.components.sound && !sound.components.sound.isPlaying) {
+          sound.components.sound.playSound();
+        }
+      }, { once: true });
+
+      // Function bilik
+      const camera = document.querySelector('#mainCamera');
+      const rooms = {
+        pua: { entity: '#puaRoom', content: '#puaContent', prefix: 'puaImg' },
+        ukiran: { entity: '#ukiranRoom', content: '#ukiranContent', prefix: 'ukiranImg' },
+        sape: { entity: '#sapeRoom', content: '#sapeContent', prefix: 'sapeImg' }
+      };
+
+      function enterRoom(name) {
+        Object.values(rooms).forEach(r => document.querySelector(r.entity).setAttribute('visible', false));
+
+        const r = rooms[name];
+        document.querySelector(r.entity).setAttribute('visible', true);
+
+        const content = document.querySelector(r.content);
+        content.innerHTML = '';
+
+        for (let i = 1; i <= 6; i++) {
+          const img = document.createElement('a-image');
+          img.setAttribute('src', `#${r.prefix}${i}`);
+          img.setAttribute('width', '1.5');
+          img.setAttribute('height', '1.5');
+
+          const row = i <= 3 ? 3 : 1;
+          const col = (i - 1) % 3;
+          const x = (col - 1) * 3;
+          img.setAttribute('position', `${x} ${row} -4`);
+
+          content.appendChild(img);
+        }
+
+        const exit = document.createElement('a-box');
+        exit.setAttribute('id', 'exitRoom');
+        exit.setAttribute('class', 'interactable');
+        exit.setAttribute('position', '0 1.5 4');
+        exit.setAttribute('width', '2.5');
+        exit.setAttribute('height', '1.2');
+        exit.setAttribute('depth', '0.2');
+        exit.setAttribute('color', '#E53935');
+
+        const exitText = document.createElement('a-text');
+        exitText.setAttribute('value', 'CLICK HERE TO EXIT THE ROOM');
+        exitText.setAttribute('align', 'center');
+        exitText.setAttribute('position', '0 0 0.15');
+        exitText.setAttribute('color', '#FFF');
+        exitText.setAttribute('width', '3.5');
+        exitText.setAttribute('scale', '0.8 0.8 1');
+
+        exit.appendChild(exitText);
+        content.appendChild(exit);
+
+        camera.setAttribute('position', '0 1.6 0');
+        camera.setAttribute('rotation', '0 0 0');
+      }
+
+      function exitRoom() {
+        Object.values(rooms).forEach(r => document.querySelector(r.entity).setAttribute('visible', false));
+        camera.setAttribute('position', '0 1.6 8');
+        camera.setAttribute('rotation', '0 0 0');
+      }
+
+      document.querySelector('#toPua').addEventListener('click', () => enterRoom('pua'));
+      document.querySelector('#toUkiran').addEventListener('click', () => enterRoom('ukiran'));
+      document.querySelector('#toSape').addEventListener('click', () => enterRoom('sape'));
+
+      document.addEventListener('click', e => {
+        if (e.target && e.target.id === 'exitRoom') exitRoom();
+      });
+    </script>
+  </a-scene>
+</body>
+</html>
