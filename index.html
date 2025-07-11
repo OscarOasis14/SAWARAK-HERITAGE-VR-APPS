@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <title>BORNEO CULTURE MUSEUM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    html, body {
+      height: 100%;
+      font-family: 'Playfair Display', serif;
+      background: url('https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/MAMA.jpg?v=1750542802588') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 50px 60px;
+      border-radius: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      font-size: 3.8rem;
+      margin-bottom: 30px;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 18px 36px;
+      font-size: 1.5rem;
+      background: #00ffff;
+      color: black;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a.button:hover {
+      background: #00cccc;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Overlay content -->
+  <div class="overlay">
+    <h1>WELCOME TO BORNEO CULTURE MUSEUM</h1>
+    <a href="museum.html" class="button">START ADVENTURE</a>
+  </div>
+
+  <!-- Muzik latar -->
+  <audio id="bgMusic" autoplay loop hidden>
+    <source src="https://cdn.glitch.global/e182a276-ad89-4cd2-977b-d3a3edeaa0e6/sape_sarawak.mp3?v=1750542036912" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Mainkan muzik selepas pengguna klik pertama kali
+   window.addEventListener('click', () => {
+  const music = document.getElementById('bgMusic');
+  if (music && music.paused) {
+    music.play();
+    sessionStorage.setItem('bgmPlayed', 'yes'); // Simpan status
+  }
+}, { once: true });
+
+  </script>
+
+</body>
+</html>
